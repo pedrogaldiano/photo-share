@@ -7,11 +7,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class EditController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        title = "Edit"
+        view.backgroundColor = .systemBackground
     }
 
 
