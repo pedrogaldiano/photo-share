@@ -34,6 +34,8 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
         )
      
         intensity.addTarget(self, action: #selector(intensityValueChanged), for: .valueChanged)
+        
+        addStylePrefersButton()
         prefersStyleButton.addTarget(self, action: #selector(changeFilter), for: .touchUpInside)
               
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +97,7 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
       guard let image = currentFilter.outputImage else {
         let alert = UIAlertController(
           title: "Error",
-          message: "Does not exists a image for processing.",
+          message: "Does not exist an image for processing.",
           preferredStyle: .alert
         )
         
@@ -116,7 +118,7 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
   
     @objc func changeFilter(_ sender: UIButton) {
       let alertController = UIAlertController(title: "Filters", message: nil, preferredStyle: .actionSheet)
-      
+        
       alertController.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default, handler: setFilter))
       alertController.addAction(UIAlertAction(title: "CIGaussianBlur", style: .default, handler: setFilter))
       alertController.addAction(UIAlertAction(title: "CIPixellate", style: .default, handler: setFilter))
@@ -125,7 +127,9 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
       alertController.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
       alertController.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
       alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-      
+     
+     //alertController.popoverPresentationController?.sourceView = imageView
+        
       present(alertController, animated: true)
     }
   
@@ -169,7 +173,7 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
       } else {
-        let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos library.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
       }
@@ -194,9 +198,11 @@ extension EditController {
   
   private func addStylePrefersButton() {
     prefersStyleButton.setTitle("Change Filter", for: .normal)
-    prefersStyleButton.layer.backgroundColor = UIColor.blue.cgColor
+    prefersStyleButton.layer.backgroundColor = UIColor.systemBlue.cgColor
     prefersStyleButton.layer.cornerRadius = 5
     prefersStyleButton.setTitleColor(.white, for: .normal)
+    prefersStyleButton.titleLabel?.font = .systemFont(ofSize: 28)
+    prefersStyleButton.titleLabel?.adjustsFontSizeToFitWidth = true
   }
 }
 
