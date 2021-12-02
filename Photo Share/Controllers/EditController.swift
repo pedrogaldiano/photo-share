@@ -56,6 +56,7 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.addSubview(prefersStyleButton)
         
         editContainerImageViewConstraints()
+        addStyleEditContainerImageView()
         addImageViewConstraints()
         addSliderViewConstraints()
         addChangeFilterConstraints()
@@ -133,8 +134,9 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
       alertController.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
       alertController.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
       alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-     
-     //alertController.popoverPresentationController?.sourceView = imageView
+
+        alertController.popoverPresentationController?.sourceView = sender as UIView
+        alertController.popoverPresentationController?.sourceRect = sender.bounds
         
       present(alertController, animated: true)
     }
@@ -144,7 +146,7 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
       
       currentFilter = CIFilter(name: actionTitle)!
         prefersStyleButton.setTitle(actionTitle, for: .normal)
-      
+
       let beginImage = CIImage(image: currentImage)
       currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
       
