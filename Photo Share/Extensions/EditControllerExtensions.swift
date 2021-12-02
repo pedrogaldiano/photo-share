@@ -9,32 +9,6 @@ import Foundation
 import UIKit
 
 extension EditController {
-   func addStyleIntensitySlider() {
-    intensity.minimumValue = 0
-    intensity.maximumValue = 1
-    intensity.isContinuous = true
-    intensity.tintColor = UIColor.blue
-    intensity.isUserInteractionEnabled = true
-    intensity.value = 0
-  }
-  
-   func addStyleEditContainerImageView() {
-    editContainerImageView.layer.borderWidth = 2
-    editContainerImageView.layer.borderColor = UIColor.gray.cgColor
-    editContainerImageView.layer.cornerRadius = 5
-   }
-  
-   func addStylePrefersButton() {
-    prefersStyleButton.setTitle("Change Filter", for: .normal)
-    prefersStyleButton.layer.backgroundColor = UIColor.systemBlue.cgColor
-    prefersStyleButton.layer.cornerRadius = 5
-    prefersStyleButton.setTitleColor(.white, for: .normal)
-    prefersStyleButton.titleLabel?.font = .systemFont(ofSize: 28)
-    prefersStyleButton.titleLabel?.adjustsFontSizeToFitWidth = true
-  }
-}
-
-extension EditController {
    func editContainerImageViewConstraints() {
     NSLayoutConstraint.activate([
       editContainerImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -69,5 +43,32 @@ extension EditController {
       prefersStyleButton.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.10),
       prefersStyleButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25)
     ])
+  }
+}
+
+
+extension EditController {
+   func addStyleIntensitySlider() {
+    intensity.minimumValue = 0
+    intensity.maximumValue = 1
+    intensity.isContinuous = true
+    intensity.tintColor = UIColor.blue
+    intensity.isUserInteractionEnabled = true
+    intensity.value = 0
+  }
+  
+   func addStyleEditContainerImageView() {
+    editContainerImageView.layer.borderWidth = 2
+    editContainerImageView.layer.borderColor = UIColor.gray.cgColor
+    editContainerImageView.layer.cornerRadius = 5
+   }
+  
+   func addStylePrefersButton() {
+    prefersStyleButton.setTitle("Change Filter", for: .normal)
+    prefersStyleButton.layer.backgroundColor = UIColor.systemBlue.cgColor
+    prefersStyleButton.layer.cornerRadius = 5
+    prefersStyleButton.setTitleColor(.white, for: .normal)
+    prefersStyleButton.titleLabel?.font = .systemFont(ofSize: 28)
+    prefersStyleButton.titleLabel?.adjustsFontSizeToFitWidth = true
   }
 }

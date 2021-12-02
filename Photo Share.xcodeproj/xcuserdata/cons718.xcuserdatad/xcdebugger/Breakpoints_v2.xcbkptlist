@@ -26,32 +26,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AC4D5836-DB0A-4C68-81B1-C74770ED7B80"
+            uuid = "59C2B3BD-7CAE-4C55-9E68-F7FA80584A2F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Photo Share/Controllers/SharedController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BE2ACF3C-6A93-4CDE-8532-05ECA02732CA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Photo Share/Controllers/SharedController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "disconnectDevices(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
