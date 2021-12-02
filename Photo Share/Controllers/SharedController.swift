@@ -44,14 +44,6 @@ class SharedController: UIViewController, UICollectionViewDelegate, UICollection
 
       present(picker, animated: true)
     }
-
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-      guard let image = info[.editedImage] as? UIImage else { return }
-      dismiss(animated: true)
-      images.insert(image, at: 0)
-      collectionView.reloadData()
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
@@ -61,21 +53,17 @@ class SharedController: UIViewController, UICollectionViewDelegate, UICollection
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? Cell else {
             fatalError("Unable to dequeue cell.")
         }
-      
+          
         cell.imageView.image = images[indexPath.item]
         cell.imageView.contentMode = .scaleToFill
-        
+  
         cell.imageView.translatesAutoresizingMaskIntoConstraints = false
-      
-        cell.addSubview(cell.imageView)
-        collectionView.addSubview(cell)
         
-        NSLayoutConstraint.activate([
-          cell.imageView.topAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.topAnchor),
-          cell.imageView.bottomAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.bottomAnchor),
-          cell.imageView.leftAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.leftAnchor),
-          cell.imageView.rightAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.rightAnchor),
-        ])
+        collectionView.addSubview(cell)
+        cell.addSubview(cell.imageView)
+                
+        addCellConstraints(cell)
+        addStyleCell(cell)
 
         return cell
     }
@@ -84,15 +72,37 @@ class SharedController: UIViewController, UICollectionViewDelegate, UICollection
 
 extension SharedController {
     func collectionViewConstraints(){
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-        ])
+      NSLayoutConstraint.activate([
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+      ])
+    }
+  
+    func addCellConstraints(_ cell: Cell) {
+      NSLayoutConstraint.activate([
+        cell.imageView.topAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.topAnchor, constant: 4),
+        cell.imageView.bottomAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.bottomAnchor, constant: -4),
+        cell.imageView.leftAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.leftAnchor, constant: 4),
+        cell.imageView.rightAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.rightAnchor, constant: -4),
+      ])
+    }
+  
+    func addStyleCell(_ cell: Cell) {
+      cell.layer.borderWidth = 1
+      cell.layer.borderColor = UIColor.lightGray.cgColor
+      cell.layer.cornerRadius = 5
     }
 }
 
 extension SharedController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    guard let image = info[.editedImage] as? UIImage else { return }
+    
+    images.insert(image, at: 0)
+    collectionView.reloadData()
+    
+    dismiss(animated: true)
+  }
 }
