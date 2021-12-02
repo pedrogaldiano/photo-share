@@ -46,8 +46,10 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if imageView.image == nil {
           imageView.image = UIImage(named: "default-image")
           imageView.contentMode = .scaleAspectFit
+            prefersStyleButton.isEnabled = false
+            prefersStyleButton.backgroundColor = .systemGray4
+            intensity.isEnabled = false
         }
-        
         editContainerImageView.addSubview(imageView)
         view.addSubview(editContainerImageView)
         view.addSubview(intensity)
@@ -76,6 +78,10 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
       
       currentImage = image
       
+        prefersStyleButton.isEnabled = true
+        prefersStyleButton.backgroundColor = .systemBlue
+        intensity.isEnabled = true
+        
       let beginImage = CIImage(image: currentImage)
       currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
       
@@ -137,6 +143,7 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
       guard let actionTitle = action.title else { return }
       
       currentFilter = CIFilter(name: actionTitle)!
+        prefersStyleButton.setTitle(actionTitle, for: .normal)
       
       let beginImage = CIImage(image: currentImage)
       currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
