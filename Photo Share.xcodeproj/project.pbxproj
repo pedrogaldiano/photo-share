@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3AF39C275919A2006B36C9 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3AF39B275919A2006B36C9 /* Cell.swift */; };
 		4E7EE8AD27586022002B723C /* EditControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EE8AC27586022002B723C /* EditControllerExtensions.swift */; };
 		4ECECF9F2757BD3200B9D7E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECECF9E2757BD3200B9D7E4 /* AppDelegate.swift */; };
 		4ECECFA12757BD3200B9D7E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECECFA02757BD3200B9D7E4 /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E3AF39B275919A2006B36C9 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		4E7EE8AC27586022002B723C /* EditControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditControllerExtensions.swift; sourceTree = "<group>"; };
 		4ECECF9B2757BD3200B9D7E4 /* Photo Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ECECF9E2757BD3200B9D7E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,9 +45,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E3AF39A2759198D006B36C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4E3AF39B275919A2006B36C9 /* Cell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4E7EE8A127585B24002B723C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4E3AF39A2759198D006B36C9 /* Views */,
 				4ECECFB42757CAC700B9D7E4 /* SharedController.swift */,
 				4ECECFA22757BD3200B9D7E4 /* EditController.swift */,
 				4ECECFB22757C86100B9D7E4 /* TabBarController.swift */,
@@ -183,6 +194,7 @@
 				4ECECFA32757BD3200B9D7E4 /* EditController.swift in Sources */,
 				4ECECFB32757C86100B9D7E4 /* TabBarController.swift in Sources */,
 				81EE7BA52757E4C200291DB8 /* Handles.swift in Sources */,
+				4E3AF39C275919A2006B36C9 /* Cell.swift in Sources */,
 				4ECECF9F2757BD3200B9D7E4 /* AppDelegate.swift in Sources */,
 				4ECECFA12757BD3200B9D7E4 /* SceneDelegate.swift in Sources */,
 			);
