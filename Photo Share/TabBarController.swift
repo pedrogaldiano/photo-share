@@ -13,36 +13,24 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         let edit = EditController()
+        let shared = SharedController()
+      
+        let navEdit = UINavigationController(rootViewController: edit)
+        let navShared = UINavigationController(rootViewController: shared)
+      
         edit.title = "Edit"
         edit.navigationItem.largeTitleDisplayMode = .always
-        
-        let navEdit = UINavigationController(rootViewController: edit)
-        navEdit.tabBarItem = UITabBarItem(title: edit.title, image: UIImage(systemName: "house"), tag: 1)
-        navEdit.navigationBar.prefersLargeTitles = true
-        
-        
-        let shared = SharedController()
+      
         shared.title = "Shared"
         shared.navigationItem.largeTitleDisplayMode = .always
         
-        let navShared = UINavigationController(rootViewController: shared)
+        
+        navEdit.tabBarItem = UITabBarItem(title: edit.title, image: UIImage(systemName: "pencil"), tag: 1)
+        navEdit.navigationBar.prefersLargeTitles = true
+        
         navShared.tabBarItem = UITabBarItem(title: shared.title, image: UIImage(systemName: "photo"), tag: 1)
         navShared.navigationBar.prefersLargeTitles = true
         
-        
-        
         setViewControllers([navEdit, navShared], animated: false)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

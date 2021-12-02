@@ -14,6 +14,7 @@
 		4ECECFAB2757BD3400B9D7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ECECFA92757BD3400B9D7E4 /* LaunchScreen.storyboard */; };
 		4ECECFB32757C86100B9D7E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECECFB22757C86100B9D7E4 /* TabBarController.swift */; };
 		4ECECFB52757CAC700B9D7E4 /* SharedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECECFB42757CAC700B9D7E4 /* SharedController.swift */; };
+		81EE7BA52757E4C200291DB8 /* Handles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE7BA42757E4C200291DB8 /* Handles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4ECECFAC2757BD3400B9D7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ECECFB22757C86100B9D7E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4ECECFB42757CAC700B9D7E4 /* SharedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedController.swift; sourceTree = "<group>"; };
+		81EE7BA42757E4C200291DB8 /* Handles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		4ECECF9D2757BD3200B9D7E4 /* Photo Share */ = {
 			isa = PBXGroup;
 			children = (
+				81EE7BA32757E48100291DB8 /* Shareds */,
 				4ECECF9E2757BD3200B9D7E4 /* AppDelegate.swift */,
 				4ECECFA02757BD3200B9D7E4 /* SceneDelegate.swift */,
 				4ECECFB42757CAC700B9D7E4 /* SharedController.swift */,
@@ -68,6 +71,14 @@
 				4ECECFAC2757BD3400B9D7E4 /* Info.plist */,
 			);
 			path = "Photo Share";
+			sourceTree = "<group>";
+		};
+		81EE7BA32757E48100291DB8 /* Shareds */ = {
+			isa = PBXGroup;
+			children = (
+				81EE7BA42757E4C200291DB8 /* Handles.swift */,
+			);
+			path = Shareds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +154,7 @@
 				4ECECFB52757CAC700B9D7E4 /* SharedController.swift in Sources */,
 				4ECECFA32757BD3200B9D7E4 /* EditController.swift in Sources */,
 				4ECECFB32757C86100B9D7E4 /* TabBarController.swift in Sources */,
+				81EE7BA52757E4C200291DB8 /* Handles.swift in Sources */,
 				4ECECF9F2757BD3200B9D7E4 /* AppDelegate.swift in Sources */,
 				4ECECFA12757BD3200B9D7E4 /* SceneDelegate.swift in Sources */,
 			);
