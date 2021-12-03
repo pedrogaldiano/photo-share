@@ -64,29 +64,27 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
   
     @objc func addImageToEdit() {
       let picker = UIImagePickerController()
-      
       picker.allowsEditing = true
       picker.delegate = self
-      
       present(picker, animated: true)
     }
   
   
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-      guard let image = info[.editedImage] as? UIImage else { return }
-  
-      dismiss(animated: true)
-      
-      currentImage = image
-      
-        prefersStyleButton.isEnabled = true
-        prefersStyleButton.backgroundColor = .systemBlue
-        intensity.isEnabled = true
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+       didFinishPickingMediaWithInfo info: [
+        UIImagePickerController.InfoKey : Any]) {
         
-      let beginImage = CIImage(image: currentImage)
-      currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-      
-      applyProcessing()
+            guard let image = info[.editedImage] as? UIImage else { return }
+            dismiss(animated: true)
+            currentImage = image
+            prefersStyleButton.isEnabled = true
+            prefersStyleButton.backgroundColor = .systemBlue
+            intensity.isEnabled = true
+        
+            let beginImage = CIImage(image: currentImage)
+            currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+            applyProcessing()
     }
   
     @objc func intensityValueChanged(sender: UISlider) {
@@ -94,32 +92,23 @@ class EditController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
   
     func applyProcessing() {
-      let inputKeys = currentFilter.inputKeys
+        let inputKeys = currentFilter.inputKeys
+        
+        if inputKeys.contains(kCIInputIntensityKey) {
+          currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
+        if inputKeys.contains(kCIInputRadiusKey) {
+          currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }
+        if inputKeys.contains(kCIInputScaleKey) {
+          currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey) }
+        if inputKeys.contains(kCIInputCenterKey) {
+          currentFilter.setValue(CIVector(x: currentImage.size.width / 2,
+                                          y: currentImage.size.height / 2), forKey: kCIInputCenterKey) }
 
-      if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
-      if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }
-      if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey) }
-      if inputKeys.contains(kCIInputCenterKey) { currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey) }
-      
-      guard let image = currentFilter.outputImage else {
-        let alert = UIAlertController(
-          title: "Error",
-          message: "Does not exist an image for processing.",
-          preferredStyle: .alert
-        )
-        
-        alert.addAction(
-          UIAlertAction(title: "Cancel", style: .cancel)
-        )
-        
-        present(alert, animated: true)
-        return
-      }
-      
-      if let cgimg = context.createCGImage(image, from: image.extent) {
-        let processedImage = UIImage(cgImage: cgimg)
-        imageView.image = processedImage
-        imageView.contentMode = .scaleToFill
+        guard let image = currentFilter.outputImage else { return }
+        if let cgimg = context.createCGImage(image, from: image.extent) {
+            let processedImage = UIImage(cgImage: cgimg)
+            imageView.image = processedImage
+            imageView.contentMode = .scaleToFill
       }
     }
   
