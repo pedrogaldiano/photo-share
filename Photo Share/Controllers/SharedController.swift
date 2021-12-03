@@ -6,7 +6,6 @@ class SharedController: UIViewController, UICollectionViewDelegate, UICollection
     var collectionView: UICollectionView!
     var mcSession: MCSession?
     var peerID: MCPeerID?
-//    var mcAdvertiserAssistant: MCAdvertiserAssistant?
     var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
     
     override func viewDidLoad() {
@@ -81,7 +80,7 @@ class SharedController: UIViewController, UICollectionViewDelegate, UICollection
             let layout = UICollectionViewFlowLayout()
           
             layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-            layout.itemSize = CGSize(width: 120, height: 150)
+            layout.itemSize = CGSize(width: 110, height: 150)
             
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
           
@@ -102,22 +101,17 @@ class SharedController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     @objc func startHost(action: UIAlertAction) {
-//        guard let mcSession = mcSession else { return }
-//        mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "photo-share", discoveryInfo: nil, session: mcSession)
-        
         mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID!, discoveryInfo: nil, serviceType: "photo-share")
         mcAdvertiserAssistant?.delegate = self
         mcAdvertiserAssistant?.startAdvertisingPeer()
-        
-//        mcAdvertiserAssistant?.start()
-        }
+    }
     
     @objc func joinSession(action: UIAlertAction) {
         guard let mcSession = mcSession else { return }
         let mcBrowser = MCBrowserViewController(serviceType: "photo-share", session: mcSession)
         mcBrowser.delegate = self
         present(mcBrowser, animated: true)
-        }
+    }
     
     @objc func devicesConnected(){
         var devices = ""
